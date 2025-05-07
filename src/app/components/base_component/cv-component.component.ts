@@ -5,6 +5,7 @@ import {EducationComponent} from '../education-component/education-component';
 import {JobExperienceComponent} from '../job-experience-component/job-experience-component';
 import {NgOptimizedImage} from '@angular/common';
 import {ReferencesComponentComponent} from '../references-component/references-component';
+import {SkillsComponent} from '../skills-component/skills-component';
 
 @Component({
   selector: 'cv-component',
@@ -15,7 +16,8 @@ import {ReferencesComponentComponent} from '../references-component/references-c
     EducationComponent,
     JobExperienceComponent,
     NgOptimizedImage,
-    ReferencesComponentComponent
+    ReferencesComponentComponent,
+    SkillsComponent
   ],
   templateUrl: './cv-component.component.html'
 })

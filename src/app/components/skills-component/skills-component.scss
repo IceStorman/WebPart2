@@ -1,0 +1,78 @@
+.skills-container {
+  max-width: 35rem;
+  margin-top: 1rem;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+
+    fa-icon {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-left: 0.75rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 3px solid black;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .skills {
+    max-width: 400px;
+    font-family: 'Segoe UI', sans-serif;
+
+    .skill {
+      margin-bottom: 20px;
+
+      .label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+
+        .bullet {
+          font-size: 8px;
+          margin-right: 10px;
+          color: #c00;
+        }
+      }
+
+      .bar {
+        position: relative;
+        height: 6px;
+        background: #ddd;
+        border-radius: 3px;
+        overflow: visible;
+
+        .fill {
+          background-color: red;
+          height: 100%;
+          position: relative;
+          transition: width 0.3s ease;
+
+          .dot {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-color: red;
+            border-radius: 50%;
+            z-index: 2;
+            box-sizing: border-box;
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+  }
+}

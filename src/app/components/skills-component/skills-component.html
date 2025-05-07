@@ -1,0 +1,21 @@
+<div class="skills-container">
+  <div class="header">
+    <fa-icon [icon]="faChartPie"></fa-icon>
+    <h2>SKILLS</h2>
+  </div>
+  <hr/>
+
+  <div class="skills">
+    <div class="skill" *ngFor="let skill of skills">
+      <div class="label">
+        {{ skill.name }}
+      </div>
+      <div class="bar">
+        <div class="fill" [style.width.%]="skill.level">
+          <div class="dot"></div>
+        </div>
+        <div class="background"></div>
+      </div>
+    </div>
+  </div>
+</div>
