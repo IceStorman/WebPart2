@@ -1,0 +1,15 @@
+.cv-block {
+  display: flex;
+
+  .left-content {
+    margin-left: 10rem;
+  }
+
+  .right-content {
+    margin-left: 5rem;
+
+    img {
+      margin-top: 2rem;
+    }
+  }
+}
