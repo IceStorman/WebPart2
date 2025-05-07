@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { BaseComponent } from './components/base_component/cv-component.component';
+import { CvComponent } from './components/base_component/cv-component.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, BaseComponent],
+  imports: [RouterOutlet, CvComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

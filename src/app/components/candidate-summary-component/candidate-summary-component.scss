@@ -1,0 +1,58 @@
+$background-color: #eee;
+$icon-color: red;
+$border-radius: 4px;
+
+.candidate-summary-container {
+  padding-left: 10rem;
+
+  .name-block{
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.25rem;
+    }
+    span {
+      font-weight: normal;
+    }
+
+    h2 {
+      font-weight: normal;
+      margin-top: 0;
+    }
+  }
+
+  .contact-container {
+    max-width: 35rem;
+    font-family: sans-serif;
+
+    .contact-box {
+      background-color: $background-color;
+      padding: 12px;
+      display: flex;
+      gap: 10px;
+      border-radius: $border-radius;
+
+      i {
+        color: $icon-color;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+        font-style: italic;
+      }
+    }
+
+    .full-width {
+      margin-bottom: 10px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 10px;
+
+      .contact-box {
+        flex: 1;
+      }
+    }
+  }
+}
