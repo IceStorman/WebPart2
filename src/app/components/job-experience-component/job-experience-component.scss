@@ -1,0 +1,67 @@
+.job-experience-container {
+  max-width: 35rem;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+
+    fa-icon {
+      margin-top: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-left: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 3px solid black;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .job-experience-entry {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    .job-left {
+      text-align: right;
+      min-width: 11.5rem;
+
+      .job {
+        font-style: italic;
+        font-weight: bold;
+      }
+
+      .city {
+        font-style: italic;
+      }
+
+      .years {
+        color: red;
+        font-weight: bold;
+      }
+    }
+
+    .job-right {
+      .title {
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+      }
+
+      .description {
+        color: #444;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+    }
+  }
+}
