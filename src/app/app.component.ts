@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { BaseComponent } from './components/base_component/base-component.component';
+import { BaseComponent } from './components/base_component/cv-component.component';
 
 
 @Component({

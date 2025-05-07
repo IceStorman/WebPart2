@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-base-component',
+  selector: 'cv-component',
   standalone: true,
-  templateUrl: './base-component.component.html'
+  templateUrl: './cv-component.component.html'
 })
 export class BaseComponent {}
