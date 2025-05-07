@@ -4,6 +4,7 @@ import {AboutMeComponent} from '../about-me-component/about-me-component';
 import {EducationComponent} from '../education-component/education-component';
 import {JobExperienceComponent} from '../job-experience-component/job-experience-component';
 import {NgOptimizedImage} from '@angular/common';
+import {ReferencesComponentComponent} from '../references-component/references-component';
 
 @Component({
   selector: 'cv-component',
@@ -13,7 +14,8 @@ import {NgOptimizedImage} from '@angular/common';
     AboutMeComponent,
     EducationComponent,
     JobExperienceComponent,
-    NgOptimizedImage
+    NgOptimizedImage,
+    ReferencesComponentComponent
   ],
   templateUrl: './cv-component.component.html'
 })
