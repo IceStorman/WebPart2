@@ -44,6 +44,12 @@ export class ApiService {
     );
   }
 
+  createEducation(education: Education): Observable<Education[]>  {
+    return this.http.post<Education[]>(`${this.apiUrl}/createEducation`, education).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
   getJobs(): Observable<Job[]> {
     return this.http.get<Job[]>(`${this.apiUrl}/jobs`).pipe(
       catchError(this.handleError.bind(this))
