@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 import {faChartPie, faFlagCheckered} from '@fortawesome/free-solid-svg-icons';
+import {Hobby} from '../../../api/dtos/dtos';
 
 @Component({
   selector: 'hobbies-component',
@@ -15,7 +16,7 @@ import {faChartPie, faFlagCheckered} from '@fortawesome/free-solid-svg-icons';
 export class HobbiesComponent {
   faFlagCheckered = faFlagCheckered;
 
-  hobbies = [
+  hobbies: Hobby[] = [
     { name: 'Book Reading', level: 90 },
     { name: 'Travelling', level: 70 },
     { name: 'Playing Chess', level: 85 },

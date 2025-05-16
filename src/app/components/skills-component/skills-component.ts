@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { CommonModule } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import {Skill} from '../../../api/dtos/dtos';
 
 @Component({
   selector: "skills-component",
@@ -15,7 +16,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 export class SkillsComponent{
   faChartPie = faChartPie;
 
-  skills = [
+  skills: Skill[] = [
     { name: 'Adobe Photoshop', level: 90 },
     { name: 'Adobe Illustrator', level: 70 },
     { name: 'Microsoft Word', level: 85 },
