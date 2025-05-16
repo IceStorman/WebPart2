@@ -2,6 +2,7 @@
   <div class="header">
     <fa-icon [icon]="faGraduationCap"></fa-icon>
     <h2>EDUCATION</h2>
+    <button (click)="openModal()">+</button>
   </div>
   <hr />
 
@@ -14,6 +15,38 @@
     <div class="edu-right">
       <div class="title">{{edu.title}}</div>
       <div class="desc">{{edu.description}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+
+    <div class="modal-labels">
+      <h2>Add your university</h2>
+
+      <label>
+        University:
+        <input type="text" placeholder="Enter your university..." />
+      </label>
+
+      <label>
+        Years:
+        <input type="text" placeholder="Enter amount of years..." />
+      </label>
+
+      <label>
+        Title:
+        <input type="text" placeholder="Enter title..." />
+      </label>
+
+      <label>
+        Description:
+        <input type="text" placeholder="Enter description..." />
+      </label>
+
+      <button class="submit-button">Submit</button>
     </div>
   </div>
 </div>

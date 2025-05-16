@@ -6,7 +6,7 @@ export const aboutMe: AboutMe = {
   lastPart: "When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
 };
 
-export const educations: Education[] = [
+export let educations: Education[] = [
   {
     school: "Stanford University",
     years: "2011 - 2013",
@@ -21,7 +21,7 @@ export const educations: Education[] = [
   }
 ]
 
-export const jobs: Job[] = [
+export let jobs: Job[] = [
   {
     job: "Creative Agency",
     city: "Chicago",
@@ -45,7 +45,7 @@ export const jobs: Job[] = [
   }
 ]
 
-export const references: Reference[] = [
+export let references: Reference[] = [
   {
     name: "DARWIN B. MAGANA",
     description: "2813 Shobe Lane Mancos, CO.",

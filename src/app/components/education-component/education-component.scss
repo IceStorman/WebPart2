@@ -14,6 +14,19 @@
       margin: 0;
     }
 
+    button {
+      width: 25px;
+      height: 25px;
+      font-size: 21px;
+      font-weight: bold;
+      border-radius: 50%;
+      border: none;
+      background-color: #5886d1;
+      color: white;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+
     fa-icon {
       margin-right: 0.5rem;
       color: black;
@@ -62,4 +75,64 @@
       }
     }
   }
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+
+  .modal label {
+    display: block;
+    margin: 12px 0 8px;
+    font-weight: 500;
+  }
+
+  .modal input, .modal textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
