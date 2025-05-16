@@ -1,0 +1,21 @@
+<div class="hobbies-container">
+  <div class="header">
+    <fa-icon [icon]="faFlagCheckered"></fa-icon>
+    <h2>HOBBIES</h2>
+  </div>
+  <hr/>
+
+  <div class="hobbies">
+    <div class="hobby" *ngFor="let hobby of hobbies">
+      <div class="label">
+        {{ hobby.name }}
+      </div>
+      <div class="bar">
+        <div class="fill" [style.width.%]="hobby.level">
+          <div class="dot"></div>
+        </div>
+        <div class="background"></div>
+      </div>
+    </div>
+  </div>
+</div>

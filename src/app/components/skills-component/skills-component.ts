@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { CommonModule } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
@@ -15,7 +14,6 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 })
 export class SkillsComponent{
   faChartPie = faChartPie;
-  faCircle = faCircle;
 
   skills = [
     { name: 'Adobe Photoshop', level: 90 },
