@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import {Observable, throwError} from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
+import {AboutMe, Education, Job, Language, Reference, Skill} from '../dtos/dtos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:1488';
+  private apiUrl = 'http://localhost:4001';
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
@@ -31,4 +32,45 @@ export class ApiService {
     return throwError(() => new Error(errorMessage));
   }
 
+  getAboutMe(): Observable<AboutMe> {
+    return this.http.get<AboutMe>(`${this.apiUrl}/aboutMe`).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
+  getEducation(): Observable<Education[]> {
+    return this.http.get<Education[]>(`${this.apiUrl}/educations`).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
+  getJobs(): Observable<Job[]> {
+    return this.http.get<Job[]>(`${this.apiUrl}/jobs`).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
+  getReference(): Observable<Reference[]> {
+    return this.http.get<Reference[]>(`${this.apiUrl}/references`).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
+  getSkills(): Observable<Skill[]> {
+    return this.http.get<Skill[]>(`${this.apiUrl}/skills`).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
+  getLanguages(): Observable<Language[]> {
+    return this.http.get<Language[]>(`${this.apiUrl}/languages`).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
+  getHobbies(): Observable<Skill[]> {
+    return this.http.get<Skill[]>(`${this.apiUrl}/hobbies`).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
 }

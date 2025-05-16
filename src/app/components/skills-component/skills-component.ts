@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { CommonModule } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {Skill} from '../../../api/dtos/dtos';
+import {ApiService} from '../../../api/services/api.service';
 
 @Component({
   selector: "skills-component",
@@ -13,14 +14,16 @@ import {Skill} from '../../../api/dtos/dtos';
   ],
   styleUrls: ["./skills-component.scss"]
 })
-export class SkillsComponent{
+export class SkillsComponent implements OnInit {
   faChartPie = faChartPie;
 
-  skills: Skill[] = [
-    { name: 'Adobe Photoshop', level: 90 },
-    { name: 'Adobe Illustrator', level: 70 },
-    { name: 'Microsoft Word', level: 85 },
-    { name: 'Microsoft Powerpoint', level: 75 },
-    { name: 'HTML-S/CSS-3', level: 80 }
-  ];
+  skills: Skill[] = [];
+
+  constructor(private ApiService: ApiService) {}
+
+  ngOnInit(): void {
+    this.ApiService.getSkills().subscribe((data: Skill[]) => {
+      this.skills = data;
+    })
+  }
 }

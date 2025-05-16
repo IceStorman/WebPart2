@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 import {faChartPie, faFlagCheckered} from '@fortawesome/free-solid-svg-icons';
 import {Hobby} from '../../../api/dtos/dtos';
+import {ApiService} from '../../../api/services/api.service';
 
 @Component({
   selector: 'hobbies-component',
@@ -13,14 +14,16 @@ import {Hobby} from '../../../api/dtos/dtos';
   ],
   styleUrls: ['./hobbies-component.scss']
 })
-export class HobbiesComponent {
+export class HobbiesComponent implements OnInit {
   faFlagCheckered = faFlagCheckered;
 
-  hobbies: Hobby[] = [
-    { name: 'Book Reading', level: 90 },
-    { name: 'Travelling', level: 70 },
-    { name: 'Playing Chess', level: 85 },
-    { name: 'Painting', level: 75 },
-    { name: 'Graphic Design', level: 80 }
-  ]
+  hobbies: Hobby[] = []
+
+  constructor(private ApiService: ApiService) {}
+
+  ngOnInit() {
+    this.ApiService.getHobbies().subscribe((data: Hobby[]) => {
+      this.hobbies = data;
+    })
+  }
 }

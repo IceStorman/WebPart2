@@ -1,8 +1,9 @@
-import { Component } from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NgForOf} from '@angular/common';
 import {Education} from '../../../api/dtos/dtos';
+import {ApiService} from '../../../api/services/api.service';
 
 @Component({
   selector: "education-component",
@@ -13,21 +14,16 @@ import {Education} from '../../../api/dtos/dtos';
     NgForOf
   ]
 })
-export class EducationComponent {
+export class EducationComponent implements OnInit {
   faGraduationCap = faGraduationCap;
 
-  educations: Education[] = [
-    {
-      school: "Stanford University",
-      years: "2011 - 2013",
-      title: "MASTER DEGREE GRADUATE",
-      description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      school: "Chicago University",
-      years: "2007 - 2010",
-      title: "BACHELOR DEGREE",
-      description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    }
-  ]
+  educations: Education[] = [];
+
+  constructor(private ApiService: ApiService) {}
+
+  ngOnInit() {
+    this.ApiService.getEducation().subscribe((data: Education[]) => {
+      this.educations = data;
+    })
+  }
 }

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {NgForOf} from '@angular/common';
 import {Reference} from '../../../api/dtos/dtos';
+import {ApiService} from '../../../api/services/api.service';
 
 @Component({
   selector: 'references-component',
@@ -13,21 +14,16 @@ import {Reference} from '../../../api/dtos/dtos';
   ],
   styleUrls: ['references-component.scss']
 })
-export class ReferencesComponentComponent {
+export class ReferencesComponentComponent implements OnInit {
   faUsers = faUsers;
 
-  references: Reference[] = [
-    {
-      name: "DARWIN B. MAGANA",
-      description: "2813 Shobe Lane Mancos, CO.",
-      phoneNumber: "+1-970-533-3393",
-      email: "www.yourwebsite.com"
-    },
-    {
-      name: "ROBERT J. BELVIN",
-      description: "2119 Fairfax Drive Newark, NJ.",
-      phoneNumber: "+1-908-987-5103",
-      email: "www.yourwebsite.com"
-    }
-  ]
+  references: Reference[] = [];
+
+  constructor(private ApiService: ApiService) {}
+
+  ngOnInit(): void {
+    this.ApiService.getReference().subscribe((data: Reference[]) => {
+      this.references = data;
+    })
+  }
 }
