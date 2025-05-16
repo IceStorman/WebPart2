@@ -5,33 +5,15 @@
   </div>
   <hr />
 
-  <div class="edu-entry">
+  <div class="edu-entry" *ngFor="let edu of educations">
     <div class="edu-left">
-      <div class="school">Stanford University</div>
-      <div class="years">2011 - 2013</div>
+      <div class="school">{{edu.school}}</div>
+      <div class="years">{{edu.years}}</div>
     </div>
 
     <div class="edu-right">
-      <div class="title">MASTER DEGREE GRADUATE</div>
-      <div class="desc">
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-        printer took a galley of type and scrambled it to make a type specimen book.
-      </div>
-    </div>
-  </div>
-
-  <div class="edu-entry">
-    <div class="edu-left">
-      <div class="school">Chicago University</div>
-      <div class="years">2007 - 2010</div>
-    </div>
-
-    <div class="edu-right">
-      <div class="title">BACHELOR DEGREE</div>
-      <div class="desc">
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-        printer took a galley of type and scrambled it to make a type specimen book.
-      </div>
+      <div class="title">{{edu.title}}</div>
+      <div class="desc">{{edu.description}}</div>
     </div>
   </div>
 </div>
