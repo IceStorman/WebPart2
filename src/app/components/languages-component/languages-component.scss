@@ -1,0 +1,41 @@
+.languages-container {
+  max-width: 35rem;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+
+    fa-icon {
+      margin-top: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-left: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 3px solid black;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .languages-skills {
+    display: flex;
+    flex-direction: row;
+
+    .languagePercentage {
+      font-weight: bold;
+    }
+    .languageTitle {
+      font-weight: bold;
+    }
+  }
+}
