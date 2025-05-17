@@ -44,8 +44,8 @@ export class ApiService {
     );
   }
 
-  createEducation(education: Education): Observable<Education[]>  {
-    return this.http.post<Education[]>(`${this.apiUrl}/createEducation`, education).pipe(
+  createEducation(education: Education): Observable<Education>  {
+    return this.http.post<Education>(`${this.apiUrl}/createEducation`, education).pipe(
       catchError(this.handleError.bind(this))
     );
   }
@@ -56,8 +56,14 @@ export class ApiService {
     );
   }
 
-  getReference(): Observable<Reference[]> {
+  getReferences(): Observable<Reference[]> {
     return this.http.get<Reference[]>(`${this.apiUrl}/references`).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
+  createReference(reference: Reference): Observable<Reference> {
+    return this.http.post<Reference>(`${this.apiUrl}/createReference`, reference).pipe(
       catchError(this.handleError.bind(this))
     );
   }

@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import {aboutMe, educations, hobbies, jobs, languages, references, skills} from './api/data/data';
-import {Education} from './api/dtos/dtos';
+import {Education, Job, Reference} from './api/dtos/dtos';
 
 const app = express();
 
@@ -26,9 +26,21 @@ app.get("/jobs", (req: Request, res: Response) => {
   res.json(jobs);
 });
 
+app.post("/createJob", (req: Request, res: Response) => {
+  const newJob: Job = req.body;
+  jobs.push(newJob);
+  res.status(200).json(newJob);
+})
+
 app.get("/references", (req: Request, res: Response) => {
   res.json(references);
 });
+
+app.post("/createReference", (req: Request, res: Response) => {
+  const newReference: Reference = req.body;
+  references.push(newReference);
+  res.status(200).json(newReference);
+})
 
 app.get("/skills", (req: Request, res: Response) => {
   res.json(skills);
