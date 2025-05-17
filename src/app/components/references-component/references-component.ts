@@ -40,9 +40,9 @@ export class ReferencesComponentComponent implements OnInit {
     const phone = (form.elements.namedItem('phone') as HTMLInputElement)?.value;
     const email = (form.elements.namedItem('email') as HTMLInputElement)?.value;
 
-    const newEducation: Reference = {name: name, description: description, phoneNumber: phone, email: email};
+    const newReference: Reference = {name: name, description: description, phoneNumber: phone, email: email};
 
-    this.ApiService.createReference(newEducation).pipe(
+    this.ApiService.createReference(newReference).pipe(
       switchMap(() => this.ApiService.getReferences())
     ).subscribe({
       next: (response) => {

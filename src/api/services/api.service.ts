@@ -56,6 +56,12 @@ export class ApiService {
     );
   }
 
+  createJob(job: Job): Observable<Job> {
+    return this.http.post<Job>(`${this.apiUrl}/createJob`, job).pipe(
+      catchError(this.handleError.bind(this))
+    );
+  }
+
   getReferences(): Observable<Reference[]> {
     return this.http.get<Reference[]>(`${this.apiUrl}/references`).pipe(
       catchError(this.handleError.bind(this))

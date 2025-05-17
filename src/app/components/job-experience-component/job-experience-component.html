@@ -2,7 +2,7 @@
   <div class="header">
     <fa-icon [icon]="faBusinessTime"></fa-icon>
     <h2>JOB EXPERIENCE</h2>
-    <button>+</button>
+    <button (click)="openModal()">+</button>
   </div>
   <hr/>
 
@@ -17,5 +17,43 @@
       <div class="title">{{job.title}}</div>
       <div class="description">{{job.description}}</div>
     </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+
+    <form class="modal-labels" (submit)="handleSubmit($event)">
+      <h2>Add job experience</h2>
+
+      <label>
+        Job:
+        <input type="text" name="job" placeholder="Enter job name..." />
+      </label>
+
+      <label>
+        City:
+        <input type="text" name ="city" placeholder="Enter city..." />
+      </label>
+
+      <label>
+        Years:
+        <input type="text" name="years" placeholder="Enter years..." />
+      </label>
+
+      <label>
+        Position:
+        <input type="text" name="position" placeholder="Enter position..." />
+      </label>
+
+      <label>
+        Description:
+        <input type="text" name="description" placeholder="Enter description..." />
+      </label>
+
+      <button class="submit-button" type="submit">Submit</button>
+    </form>
   </div>
 </div>
