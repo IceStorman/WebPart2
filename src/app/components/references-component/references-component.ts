@@ -5,6 +5,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Education, Reference} from '../../../api/dtos/dtos';
 import {ApiService} from '../../../api/services/api.service';
 import {switchMap} from 'rxjs';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   selector: 'references-component',
@@ -12,17 +13,27 @@ import {switchMap} from 'rxjs';
   imports: [
     FaIconComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule
   ],
   styleUrls: ['references-component.scss']
 })
 export class ReferencesComponentComponent implements OnInit {
   faUsers = faUsers;
   isModalOpen = false;
+  form: FormGroup;
 
   references: Reference[] = [];
 
-  constructor(private ApiService: ApiService) {}
+  constructor(private fb: FormBuilder, private ApiService: ApiService) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      phone: ['', Validators.required],
+      email: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     this.ApiService.getReferences().subscribe((data: Reference[]) => {
@@ -30,17 +41,18 @@ export class ReferencesComponentComponent implements OnInit {
     })
   }
 
-  handleSubmit(event: Event) {
-    event.preventDefault();
+  handleSubmit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
-    const form = event.target as HTMLFormElement;
-
-    const name = (form.elements.namedItem('name') as HTMLInputElement)?.value;
-    const description = (form.elements.namedItem('description') as HTMLInputElement)?.value;
-    const phone = (form.elements.namedItem('phone') as HTMLInputElement)?.value;
-    const email = (form.elements.namedItem('email') as HTMLInputElement)?.value;
-
-    const newReference: Reference = {name: name, description: description, phoneNumber: phone, email: email};
+    const newReference: Reference = {
+      name: this.form.value.name,
+      description: this.form.value.description,
+      phoneNumber: this.form.value.phone,
+      email: this.form.value.email
+    };
 
     this.ApiService.createReference(newReference).pipe(
       switchMap(() => this.ApiService.getReferences())
@@ -56,6 +68,7 @@ export class ReferencesComponentComponent implements OnInit {
     });
 
     this.closeModal();
+    this.form.reset();
   }
 
   openModal() {
@@ -64,5 +77,6 @@ export class ReferencesComponentComponent implements OnInit {
 
   closeModal() {
     this.isModalOpen = false;
+    this.form.reset();
   }
 }

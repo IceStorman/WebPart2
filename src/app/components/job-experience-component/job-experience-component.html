@@ -25,32 +25,44 @@
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
 
-    <form class="modal-labels" (submit)="handleSubmit($event)">
+    <form class="modal-labels" [formGroup]="form" (ngSubmit)="handleSubmit()">
       <h2>Add job experience</h2>
 
       <label>
-        Job:
-        <input type="text" name="job" placeholder="Enter job name..." />
+        Job*:
+        <input type="text" formControlName="job" placeholder="Enter job name..." />
+        <div class="error" *ngIf="form.get('job')?.touched && form.get('job')?.invalid">
+          Job is required
+        </div>
       </label>
 
       <label>
-        City:
-        <input type="text" name ="city" placeholder="Enter city..." />
+        City*:
+        <input type="text" formControlName ="city" placeholder="Enter city..." />
+        <div class="error" *ngIf="form.get('city')?.touched && form.get('city')?.invalid">
+          City is required
+        </div>
       </label>
 
       <label>
-        Years:
-        <input type="text" name="years" placeholder="Enter years..." />
+        Years*:
+        <input type="text" formControlName="years" placeholder="Enter years..." />
+        <div class="error" *ngIf="form.get('years')?.touched && form.get('years')?.invalid">
+          Years is required
+        </div>
       </label>
 
       <label>
-        Position:
-        <input type="text" name="position" placeholder="Enter position..." />
+        Position*:
+        <input type="text" formControlName="position" placeholder="Enter position..." />
+        <div class="error" *ngIf="form.get('position')?.touched && form.get('position')?.invalid">
+          Position is required
+        </div>
       </label>
 
       <label>
         Description:
-        <input type="text" name="description" placeholder="Enter description..." />
+        <input type="text" formControlName="description" placeholder="Enter description..." />
       </label>
 
       <button class="submit-button" type="submit">Submit</button>

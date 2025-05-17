@@ -5,6 +5,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Job, Reference} from '../../../api/dtos/dtos';
 import {ApiService} from '../../../api/services/api.service';
 import {switchMap} from 'rxjs';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   selector: "job-experience-component",
@@ -12,17 +13,28 @@ import {switchMap} from 'rxjs';
   imports: [
     FaIconComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule
   ],
   styleUrls: ["./job-experience-component.scss"]
 })
 export class JobExperienceComponent implements OnInit {
   faBusinessTime = faBusinessTime;
   isModalOpen = false;
+  form: FormGroup;
 
   jobs: Job[] = []
 
-  constructor(private ApiService: ApiService) {}
+  constructor(private fb: FormBuilder, private ApiService: ApiService) {
+    this.form = this.fb.group({
+      job: ['', Validators.required],
+      city: ['', Validators.required],
+      years: ['', Validators.required],
+      position: ['', Validators.required],
+      description: [''],
+    });
+  }
 
   ngOnInit() {
     this.ApiService.getJobs().subscribe((data: Job[]) => {
@@ -30,18 +42,19 @@ export class JobExperienceComponent implements OnInit {
     })
   }
 
-  handleSubmit(event: Event) {
-    event.preventDefault();
+  handleSubmit() {
+    if(this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
-    const form = event.target as HTMLFormElement;
-
-    const job = (form.elements.namedItem('job') as HTMLInputElement)?.value;
-    const city = (form.elements.namedItem('city') as HTMLInputElement)?.value;
-    const years = (form.elements.namedItem('years') as HTMLInputElement)?.value;
-    const position = (form.elements.namedItem('position') as HTMLInputElement)?.value;
-    const description = (form.elements.namedItem('description') as HTMLInputElement)?.value;
-
-    const newJob: Job = {job: job, city: city, years: years, title: position, description: description};
+    const newJob: Job = {
+      job: this.form.value.job,
+      city: this.form.value.city,
+      years: this.form.value.years,
+      title: this.form.value.position,
+      description: this.form.value.description,
+    };
 
     this.ApiService.createJob(newJob).pipe(
       switchMap(() => this.ApiService.getJobs())
@@ -57,6 +70,7 @@ export class JobExperienceComponent implements OnInit {
     });
 
     this.closeModal();
+    this.form.reset();
   }
 
   openModal() {
@@ -65,5 +79,6 @@ export class JobExperienceComponent implements OnInit {
 
   closeModal() {
     this.isModalOpen = false;
+    this.form.reset();
   }
 }

@@ -5,6 +5,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Education} from '../../../api/dtos/dtos';
 import {ApiService} from '../../../api/services/api.service';
 import {switchMap} from 'rxjs';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   selector: "education-component",
@@ -13,17 +14,26 @@ import {switchMap} from 'rxjs';
   imports: [
     FontAwesomeModule,
     NgForOf,
-    NgIf
+    NgIf,
+    ReactiveFormsModule
   ]
 })
 export class EducationComponent implements OnInit {
   faGraduationCap = faGraduationCap;
 
   isModalOpen = false;
+  form: FormGroup;
 
   educations: Education[] = [];
 
-  constructor(private ApiService: ApiService) {}
+  constructor(private fb: FormBuilder, private ApiService: ApiService) {
+    this.form = this.fb.group({
+      university: ['', Validators.required],
+      years: ['', Validators.required],
+      title: ['', Validators.required],
+      description: [''],
+    });
+  }
 
   ngOnInit() {
     this.ApiService.getEducation().subscribe((data: Education[]) => {
@@ -31,17 +41,18 @@ export class EducationComponent implements OnInit {
     })
   }
 
-  handleSubmit(event: Event) {
-    event.preventDefault();
+  handleSubmit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
-    const form = event.target as HTMLFormElement;
-
-    const university = (form.elements.namedItem('university') as HTMLInputElement)?.value;
-    const years = (form.elements.namedItem('years') as HTMLInputElement)?.value;
-    const title = (form.elements.namedItem('title') as HTMLInputElement)?.value;
-    const description = (form.elements.namedItem('description') as HTMLInputElement)?.value;
-
-    const newEducation: Education = {school: university, years: years, title: title, description: description};
+    const newEducation: Education = {
+      school: this.form.value.university,
+      years: this.form.value.years,
+      title: this.form.value.title,
+      description: this.form.value.description
+    };
 
     this.ApiService.createEducation(newEducation).pipe(
       switchMap(() => this.ApiService.getEducation())
@@ -57,6 +68,7 @@ export class EducationComponent implements OnInit {
     });
 
     this.closeModal();
+    this.form.reset();
   }
 
   openModal() {
@@ -65,5 +77,6 @@ export class EducationComponent implements OnInit {
 
   closeModal() {
     this.isModalOpen = false;
+    this.form.reset();
   }
 }
