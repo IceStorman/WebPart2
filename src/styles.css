@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+.toast-container.toast-bottom-right {
+  right: 12px;
+  bottom: 12px;
+}
+
+.toast {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+.toast-error {
+  background-color: #ff4d4f !important;
+  border-left: 6px solid #d9363e;
+}
+
+.toast-success {
+  background-color: #52c41a !important;
+  border-left: 6px solid #389e0d;
+}
+
+.toast-info {
+  background-color: #1890ff !important;
+  border-left: 6px solid #096dd9;
+}
+
+.toast-warning {
+  background-color: #faad14 !important;
+  border-left: 6px solid #d48806;
+}
